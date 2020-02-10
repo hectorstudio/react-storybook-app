@@ -10,13 +10,22 @@ import Tabs from '../../components/uielements/tabs';
 import Label from '../../components/uielements/label';
 import Button from '../../components/uielements/button';
 import CoinList from '../../components/uielements/coins/coinList';
+<<<<<<< HEAD
 import * as midgardActions from '../../redux/midgard/actions';
+=======
+import midgardActions from '../../redux/midgard/actions';
+>>>>>>> origin/master
 import { getPair, getTickerFormat } from '../../helpers/stringHelper';
 import {
   AssetLoader,
   StakeLoader,
 } from '../../components/utility/loaders/wallet';
 
+<<<<<<< HEAD
+=======
+const { getPools } = midgardActions;
+
+>>>>>>> origin/master
 const { TabPane } = Tabs;
 
 class WalletView extends Component {
@@ -102,7 +111,11 @@ class WalletView extends Component {
   render() {
     const {
       info,
+<<<<<<< HEAD
       user,
+=======
+      user: { wallet },
+>>>>>>> origin/master
       assetData,
       stakeData,
       priceIndex,
@@ -110,7 +123,10 @@ class WalletView extends Component {
       loadingAssets,
       loadingStakes,
     } = this.props;
+<<<<<<< HEAD
     const hasWallet = user && user.wallet;
+=======
+>>>>>>> origin/master
     const pair = getPair(info);
     const { source } = pair;
     const selectedAsset = this.getSelectedAsset(pair);
@@ -130,7 +146,11 @@ class WalletView extends Component {
             <Label className="asset-title-label" weight="600">
               {this.renderAssetTitle()}
             </Label>
+<<<<<<< HEAD
             {!hasWallet && (
+=======
+            {!wallet && (
+>>>>>>> origin/master
               <Link to="/connect">
                 <Button color="success">CONNECT</Button>
               </Link>
@@ -170,7 +190,11 @@ class WalletView extends Component {
 }
 
 WalletView.propTypes = {
+<<<<<<< HEAD
   user: PropTypes.object, // Maybe<User>
+=======
+  user: PropTypes.object,
+>>>>>>> origin/master
   page: PropTypes.string,
   view: PropTypes.string,
   info: PropTypes.string,
@@ -179,6 +203,10 @@ WalletView.propTypes = {
   stakeData: PropTypes.array.isRequired,
   loadingAssets: PropTypes.bool.isRequired,
   loadingStakes: PropTypes.bool.isRequired,
+<<<<<<< HEAD
+=======
+  setStakeData: PropTypes.func.isRequired,
+>>>>>>> origin/master
   getPools: PropTypes.func.isRequired,
   priceIndex: PropTypes.object.isRequired,
   basePriceAsset: PropTypes.string.isRequired,
@@ -204,7 +232,11 @@ export default compose(
       basePriceAsset: state.Midgard.basePriceAsset,
     }),
     {
+<<<<<<< HEAD
       getPools: midgardActions.getPools,
+=======
+      getPools,
+>>>>>>> origin/master
     },
   ),
   withRouter,

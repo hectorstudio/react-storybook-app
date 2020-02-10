@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { get as _get } from 'lodash';
 
 import { getSwapMemo } from '../../helpers/memoHelper';
@@ -6,6 +7,10 @@ import {
   getFixedNumber,
   getUserFormat,
 } from '../../helpers/stringHelper';
+=======
+import { getSwapMemo } from '../../helpers/memoHelper';
+import { getTickerFormat, getFixedNumber } from '../../helpers/stringHelper';
+>>>>>>> origin/master
 import { getZValue, getPx, getPz, getSlip, getFee } from './calc';
 import { BASE_NUMBER } from '../../settings/constants';
 import { getTxHashFromMemo } from '../../helpers/binance';
@@ -17,6 +22,7 @@ export const getSwapType = (from, to) => {
   return 'double_swap';
 };
 
+<<<<<<< HEAD
 export const getSwapData = (from, poolInfo, priceIndex, basePriceAsset) => {
   const asset = from;
 
@@ -61,6 +67,8 @@ export const getSwapData = (from, poolInfo, priceIndex, basePriceAsset) => {
   }
 };
 
+=======
+>>>>>>> origin/master
 export const getCalcResult = (
   from,
   to,
@@ -111,10 +119,17 @@ export const getCalcResult = (
 
     const calcData = { X, Y, R, Z, Py, Pr: Py };
 
+<<<<<<< HEAD
     const zValue = Number(getZValue(xValue, calcData).toFixed(2));
     const slip = getFixedNumber(getSlip(xValue, calcData), 0);
     const Px = getPx(xValue, calcData);
     const Pz = Number(getPz(xValue, calcData).toFixed(2));
+=======
+    const zValue = getZValue(xValue, calcData).toFixed(2);
+    const slip = getFixedNumber(getSlip(xValue, calcData), 0);
+    const Px = getPx(xValue, calcData);
+    const Pz = getPz(xValue, calcData).toFixed(2);
+>>>>>>> origin/master
     const fee = getFixedNumber(getFee(xValue, calcData));
 
     return {
@@ -162,9 +177,13 @@ export const getCalcResult = (
     const xTimes = xValue ** 2;
     const balanceTimes = X ** 2;
     const outputToken = Number(((xValue * X * Y) / times).toFixed(2));
+<<<<<<< HEAD
     const outputPy = Number(
       ((Px * (X + xValue)) / (Y - outputToken)).toFixed(2),
     );
+=======
+    const outputPy = ((Px * (X + xValue)) / (Y - outputToken)).toFixed(2);
+>>>>>>> origin/master
     // const input = xValue * Px;
     // const output = outputToken * outputPy;
     // const priceSlip = Math.round(
@@ -221,9 +240,13 @@ export const getCalcResult = (
     const xTimes = xValue ** 2;
     const balanceTimes = X ** 2;
     const outputToken = Number(((xValue * X * Y) / times).toFixed(2));
+<<<<<<< HEAD
     const outputPy = Number(
       ((Px * (X + xValue)) / (Y - outputToken)).toFixed(2),
     );
+=======
+    const outputPy = ((Px * (X + xValue)) / (Y - outputToken)).toFixed(2);
+>>>>>>> origin/master
     // const input = xValue * Px;
     // const output = outputToken * outputPy;
 
@@ -246,8 +269,11 @@ export const getCalcResult = (
       fee,
     };
   }
+<<<<<<< HEAD
 
   return null;
+=======
+>>>>>>> origin/master
 };
 
 export const validateSwap = (wallet, type, data, amount) => {

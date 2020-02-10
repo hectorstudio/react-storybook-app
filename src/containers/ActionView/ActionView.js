@@ -15,7 +15,11 @@ import FaqsView from '../FaqsView';
 import NetworkView from '../NetworkView';
 import TutorialView from '../TutorialView';
 
+<<<<<<< HEAD
 import * as walletActions from '../../redux/wallet/actions';
+=======
+import walletActions from '../../redux/wallet/actions';
+>>>>>>> origin/master
 
 const { refreshBalance } = walletActions;
 
@@ -112,7 +116,11 @@ ActionView.propTypes = {
   type: PropTypes.string,
   view: PropTypes.string,
   info: PropTypes.string,
+<<<<<<< HEAD
   user: PropTypes.object, // Maybe<User>
+=======
+  user: PropTypes.object.isRequired,
+>>>>>>> origin/master
   refreshBalance: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   symbol: PropTypes.string,

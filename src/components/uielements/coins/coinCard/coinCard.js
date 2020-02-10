@@ -272,7 +272,11 @@ CoinCard.propTypes = {
   assetData: PropTypes.array,
   amount: PropTypes.number,
   price: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+<<<<<<< HEAD
   priceIndex: PropTypes.object,
+=======
+  priceIndex: PropTypes.object.isRequired,
+>>>>>>> origin/master
   unit: PropTypes.string,
   slip: PropTypes.number,
   title: PropTypes.string,

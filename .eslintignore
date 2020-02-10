@@ -1,4 +1,8 @@
 /cypress
 /config
+<<<<<<< HEAD
 /scripts
 /src/types/generated
+=======
+/scripts
+>>>>>>> origin/master

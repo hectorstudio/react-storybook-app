@@ -37,7 +37,11 @@ export interface SetTxHash {
 
 export interface ResetTxStatus {
   type: typeof RESET_TX_STATUS;
+<<<<<<< HEAD
   payload?: Partial<TxStatus>;
+=======
+  payload?: TxStatus;
+>>>>>>> origin/master
 }
 
 export type AppActionsTypes =
@@ -94,7 +98,11 @@ export const setTxHash = (payload: string): SetTxHash => ({
   payload,
 });
 
+<<<<<<< HEAD
 export const resetTxStatus = (payload?: Partial<TxStatus>): ResetTxStatus => ({
+=======
+export const resetTxStatus = (payload?: TxStatus): ResetTxStatus => ({
+>>>>>>> origin/master
   type: RESET_TX_STATUS,
   payload,
 });

@@ -26,12 +26,25 @@ import {
   countTxTimerValue,
   resetTxStatus,
 } from '../../../redux/app/actions';
+<<<<<<< HEAD
 import * as midgardActions from '../../../redux/midgard/actions';
 import * as binanceActions from '../../../redux/binance/actions';
+=======
+import walletactions from '../../../redux/wallet/actions';
+import midgardActions from '../../../redux/midgard/actions';
+import binanceActions from '../../../redux/binance/actions';
+>>>>>>> origin/master
 import { getBepswapValues, getBnbPrice, getPriceDiff } from '../utils';
 import { getTickerFormat, getFixedNumber } from '../../../helpers/stringHelper';
 import { MAX_VALUE } from '../../../redux/app/const';
 
+<<<<<<< HEAD
+=======
+const { getPools } = midgardActions;
+const { getRunePrice } = walletactions;
+const { getBinanceTicker } = binanceActions;
+
+>>>>>>> origin/master
 class TradeDetail extends Component {
   constructor(props) {
     super(props);
@@ -259,7 +272,11 @@ class TradeDetail extends Component {
     const bnbPrice = getBnbPrice(pools);
     const bepswapValues = getBepswapValues(symbol, pools, bnbPrice);
 
+<<<<<<< HEAD
     const marketPrice = tickerData?.lastPrice || 0;
+=======
+    const marketPrice = tickerData.lastPrice || 0;
+>>>>>>> origin/master
     const priceDiff = getPriceDiff(marketPrice, bepswapValues.poolPriceBNB);
 
     return (
@@ -380,9 +397,15 @@ export default compose(
       tickerData: state.Binance.ticker,
     }),
     {
+<<<<<<< HEAD
       getPools: midgardActions.getPools,
       getRunePrice: midgardActions.getRunePrice,
       getBinanceTicker: binanceActions.getBinanceTicker,
+=======
+      getPools,
+      getRunePrice,
+      getBinanceTicker,
+>>>>>>> origin/master
       setTxTimerModal,
       setTxTimerStatus,
       countTxTimerValue,

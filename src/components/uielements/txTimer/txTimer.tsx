@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/* eslint react/prop-types: 0 */
+
+>>>>>>> origin/master
 import React, { useCallback, useState, useEffect } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { ConfirmIcon, RefundIcon } from '../../icons/timerIcons';
@@ -10,7 +15,11 @@ interface Props {
   status: boolean;
   value: number;
   maxValue: number;
+<<<<<<< HEAD
   startTime?: number;
+=======
+  startTime: number;
+>>>>>>> origin/master
   interval?: number;
   onChange?: () => void;
   onEnd?: () => void;
@@ -23,7 +32,11 @@ const TxTimer: React.FC<Props> = (props): JSX.Element => {
     status = false,
     value,
     maxValue,
+<<<<<<< HEAD
     startTime = Date.now(),
+=======
+    startTime,
+>>>>>>> origin/master
     onChange = () => {},
     interval = 1000,
     refunded = false,

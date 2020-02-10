@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { TransferEventData, TxHash } from '../types/binance';
+=======
+>>>>>>> origin/master
 
 /**
  * Get `hash` from transfer event sent by Binance chain

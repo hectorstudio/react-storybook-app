@@ -1,22 +1,37 @@
+<<<<<<< HEAD
 import { getTickerFormat, getBaseNumberFormat, getUserFormat, getPair, getFixedNumber, compareShallowStr } from './stringHelper';
 
 describe('helpers/stringHelper/', () => {
   // getTickerFormat
 
+=======
+import { getTickerFormat } from './stringHelper';
+
+describe('helpers/stringHelper/', () => {
+>>>>>>> origin/master
   describe('getTickerFormat', () => {
     it('should parse a pair ', () => {
       const result = getTickerFormat('STAKE:TUSDB-000');
       expect(result).toEqual('stake:tusdb');
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     it('should returns null of no symbol given ', () => {
       const result = getTickerFormat();
       expect(result).toBeNull;
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
     it('should lowercase ticker only ', () => {
       const result = getTickerFormat('XXX000');
       expect(result).toEqual('xxx000');
     });
   });
+<<<<<<< HEAD
 
   // getBaseNumberFormat
 
@@ -102,4 +117,6 @@ describe('helpers/stringHelper/', () => {
       expect(result).toEqual(false);
     });
   });
+=======
+>>>>>>> origin/master
 });

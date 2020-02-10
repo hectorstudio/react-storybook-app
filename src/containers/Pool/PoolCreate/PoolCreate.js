@@ -3,7 +3,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+<<<<<<< HEAD
 import { Row, Col, notification, Icon } from 'antd';
+=======
+import { Row, Col, Form, notification, Icon } from 'antd';
+>>>>>>> origin/master
 import { crypto } from '@binance-chain/javascript-sdk';
 import { get as _get } from 'lodash';
 
@@ -16,11 +20,18 @@ import CoinIcon from '../../../components/uielements/coins/coinIcon';
 import CoinCard from '../../../components/uielements/coins/coinCard';
 import Slider from '../../../components/uielements/slider';
 import Drag from '../../../components/uielements/drag';
+<<<<<<< HEAD
+=======
+import Input from '../../../components/uielements/input';
+>>>>>>> origin/master
 import { greyArrowIcon } from '../../../components/icons';
 import TxTimer from '../../../components/uielements/txTimer';
 import StepBar from '../../../components/uielements/stepBar';
 import CoinData from '../../../components/uielements/coins/coinData';
+<<<<<<< HEAD
 import PrivateModal from '../../../components/modals/privateModal';
+=======
+>>>>>>> origin/master
 
 import {
   setTxTimerModal,
@@ -28,11 +39,20 @@ import {
   countTxTimerValue,
   resetTxStatus,
 } from '../../../redux/app/actions';
+<<<<<<< HEAD
 import * as midgardActions from '../../../redux/midgard/actions';
 import * as binanceActions from '../../../redux/binance/actions';
 
 import {
   ContentWrapper,
+=======
+import midgardActions from '../../../redux/midgard/actions';
+import binanceActions from '../../../redux/binance/actions';
+
+import {
+  ContentWrapper,
+  PrivateModal,
+>>>>>>> origin/master
   ConfirmModal,
   ConfirmModalContent,
 } from './PoolCreate.style';
@@ -52,6 +72,12 @@ import { MAX_VALUE } from '../../../redux/app/const';
 import { delay } from '../../../helpers/asyncHelper';
 import TokenDetailLoader from '../../../components/utility/loaders/tokenDetail';
 
+<<<<<<< HEAD
+=======
+const { getPools, getStakerPoolData, getPoolAddress } = midgardActions;
+const { getBinanceTokens, getBinanceMarkets } = binanceActions;
+
+>>>>>>> origin/master
 class PoolCreate extends Component {
   constructor(props) {
     super(props);
@@ -106,6 +132,7 @@ class PoolCreate extends Component {
   };
 
   getStakerData = () => {
+<<<<<<< HEAD
     const { getStakerPoolData, symbol, user } = this.props;
 
     if (user) {
@@ -116,6 +143,22 @@ class PoolCreate extends Component {
   handleChangePassword = password => {
     this.setState({
       password,
+=======
+    const {
+      getStakerPoolData,
+      symbol,
+      user: { wallet },
+    } = this.props;
+
+    if (wallet) {
+      getStakerPoolData({ asset: symbol, address: wallet });
+    }
+  };
+
+  handleChangePassword = e => {
+    this.setState({
+      password: e.target.value,
+>>>>>>> origin/master
       invalidPassword: false,
     });
   };
@@ -252,9 +295,15 @@ class PoolCreate extends Component {
   };
 
   handleCreatePool = () => {
+<<<<<<< HEAD
     const { user } = this.props;
     const wallet = user ? user.wallet : null;
     const keystore = user ? user.keystore : null;
+=======
+    const {
+      user: { keystore, wallet },
+    } = this.props;
+>>>>>>> origin/master
     const { runeAmount, tokenAmount } = this.state;
 
     if (!wallet) {
@@ -281,6 +330,7 @@ class PoolCreate extends Component {
   };
 
   handleConfirmCreate = async () => {
+<<<<<<< HEAD
     const { user } = this.props;
     const { runeAmount, tokenAmount } = this.state;
 
@@ -308,6 +358,35 @@ class PoolCreate extends Component {
           dragReset: true,
         });
       }
+=======
+    const {
+      user: { wallet },
+    } = this.props;
+    const { runeAmount, tokenAmount } = this.state;
+
+    // start timer modal
+    this.handleStartTimer();
+    this.hash = null;
+    try {
+      const { result } = await confirmCreatePool(
+        Binance,
+        wallet,
+        runeAmount,
+        tokenAmount,
+        this.getData(),
+      );
+
+      this.hash = result[0].hash;
+    } catch (error) {
+      notification.error({
+        message: 'Create Pool Failed',
+        description: 'Create Pool information is not valid.',
+      });
+      console.error(error); // eslint-disable-line no-console
+      this.setState({
+        dragReset: true,
+      });
+>>>>>>> origin/master
     }
   };
 
@@ -329,6 +408,7 @@ class PoolCreate extends Component {
   handleConfirmPassword = async e => {
     e.preventDefault();
 
+<<<<<<< HEAD
     const { user } = this.props;
     const { password } = this.state;
 
@@ -362,6 +442,38 @@ class PoolCreate extends Component {
         });
         console.error(error); // eslint-disable-line no-console
       }
+=======
+    const {
+      user: { keystore, wallet },
+    } = this.props;
+    const { password } = this.state;
+
+    this.setState({ validatingPassword: true });
+    // Short delay to render latest state changes of `validatingPassword`
+    await delay(200);
+
+    try {
+      const privateKey = crypto.getPrivateKeyFromKeyStore(keystore, password);
+      Binance.setPrivateKey(privateKey);
+      const address = crypto.getAddressFromPrivateKey(
+        privateKey,
+        Binance.getPrefix(),
+      );
+      if (wallet === address) {
+        this.handleConfirmCreate();
+      }
+
+      this.setState({
+        validatingPassword: false,
+        openPrivateModal: false,
+      });
+    } catch (error) {
+      this.setState({
+        validatingPassword: false,
+        invalidPassword: true,
+      });
+      console.error(error); // eslint-disable-line no-console
+>>>>>>> origin/master
     }
   };
 
@@ -512,6 +624,7 @@ class PoolCreate extends Component {
           </div>
         </div>
         <PrivateModal
+<<<<<<< HEAD
           visible={openPrivateModal}
           validatingPassword={validatingPassword}
           invalidPassword={invalidPassword}
@@ -520,6 +633,38 @@ class PoolCreate extends Component {
           onOk={this.handleConfirmPassword}
           onCancel={this.handleCancelPrivateModal}
         />
+=======
+          title="PASSWORD CONFIRMATION"
+          visible={openPrivateModal}
+          onOk={!validatingPassword ? this.handleConfirmPassword : undefined}
+          onCancel={this.handleCancelPrivateModal}
+          maskClosable={false}
+          closable={false}
+          okText="CONFIRM"
+          cancelText="CANCEL"
+        >
+          <Form onSubmit={this.handleConfirmPassword} autoComplete="off">
+            <Form.Item
+              className={invalidPassword ? 'has-error' : ''}
+              extra={validatingPassword ? 'Validating password ...' : ''}
+            >
+              <Input
+                data-test="password-confirmation-input"
+                type="password"
+                typevalue="ghost"
+                sizevalue="big"
+                value={password}
+                onChange={this.handleChangePassword}
+                prefix={<Icon type="lock" />}
+                autoComplete="off"
+              />
+              {invalidPassword && (
+                <div className="ant-form-explain">Password is wrong!</div>
+              )}
+            </Form.Item>
+          </Form>
+        </PrivateModal>
+>>>>>>> origin/master
       </div>
     );
   };
@@ -698,6 +843,7 @@ PoolCreate.propTypes = {
   symbol: PropTypes.string.isRequired,
   assetData: PropTypes.array.isRequired,
   pools: PropTypes.array.isRequired,
+<<<<<<< HEAD
   poolAddress: PropTypes.string,
   poolData: PropTypes.object.isRequired,
   stakerPoolData: PropTypes.object.isRequired,
@@ -705,6 +851,15 @@ PoolCreate.propTypes = {
   user: PropTypes.object, // Maybe<User>
   basePriceAsset: PropTypes.string.isRequired,
   priceIndex: PropTypes.object,
+=======
+  poolAddress: PropTypes.string.isRequired,
+  poolData: PropTypes.object.isRequired,
+  stakerPoolData: PropTypes.object.isRequired,
+  assets: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  basePriceAsset: PropTypes.string.isRequired,
+  priceIndex: PropTypes.object.isRequired,
+>>>>>>> origin/master
   getPools: PropTypes.func.isRequired,
   getPoolAddress: PropTypes.func.isRequired,
   getStakerPoolData: PropTypes.func.isRequired,
@@ -734,11 +889,19 @@ export default compose(
       txStatus: state.App.txStatus,
     }),
     {
+<<<<<<< HEAD
       getPools: midgardActions.getPools,
       getPoolAddress: midgardActions.getPoolAddress,
       getStakerPoolData: midgardActions.getStakerPoolData,
       getBinanceTokens: binanceActions.getBinanceTokens,
       getBinanceMarkets: binanceActions.getBinanceMarkets,
+=======
+      getPools,
+      getPoolAddress,
+      getStakerPoolData,
+      getBinanceTokens,
+      getBinanceMarkets,
+>>>>>>> origin/master
       setTxTimerModal,
       setTxTimerStatus,
       countTxTimerValue,

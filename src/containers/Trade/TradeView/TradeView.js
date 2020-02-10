@@ -10,8 +10,16 @@ import { ContentWrapper } from './TradeView.style';
 import { getTradeData } from '../utils';
 import { getFixedNumber } from '../../../helpers/stringHelper';
 
+<<<<<<< HEAD
 import * as midgardActions from '../../../redux/midgard/actions';
 import * as binanceActions from '../../../redux/binance/actions';
+=======
+import midgardActions from '../../../redux/midgard/actions';
+import binanceActions from '../../../redux/binance/actions';
+
+const { getPools, getRunePrice } = midgardActions;
+const { getBinanceMarkets } = binanceActions;
+>>>>>>> origin/master
 
 class TradeView extends Component {
   constructor(props) {
@@ -157,9 +165,15 @@ export default compose(
       binanceData: state.Binance,
     }),
     {
+<<<<<<< HEAD
       getPools: midgardActions.getPools,
       getRunePrice: midgardActions.getRunePrice,
       getBinanceMarkets: binanceActions.getBinanceMarkets,
+=======
+      getPools,
+      getRunePrice,
+      getBinanceMarkets,
+>>>>>>> origin/master
     },
   ),
   withRouter,

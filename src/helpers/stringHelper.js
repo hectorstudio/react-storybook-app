@@ -22,7 +22,11 @@ export const getUserFormat = value => {
 };
 
 export const getBaseNumberFormat = value => {
+<<<<<<< HEAD
   if (value && !Number.isNaN(parseFloat(value))) {
+=======
+  if (value) {
+>>>>>>> origin/master
     return Number((value * BASE_NUMBER).toFixed(2));
   }
 
@@ -30,12 +34,21 @@ export const getBaseNumberFormat = value => {
 };
 
 export const getFixedNumber = (value, point = 2) => {
+<<<<<<< HEAD
   if (Number.isNaN(parseFloat(value))) return 0;
+=======
+  if (Number.isNaN(value)) return 0;
+
+>>>>>>> origin/master
   return Number(Number(value).toFixed(point));
 };
 
 export const getTickerFormat = symbol => {
   if (!symbol) return null;
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
   return symbol.split('-')[0].toLowerCase();
 };
 

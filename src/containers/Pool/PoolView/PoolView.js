@@ -15,7 +15,13 @@ import Button from '../../../components/uielements/button';
 import { ContentWrapper } from './PoolView.style';
 import { getPoolData, getCreatePoolTokens } from '../utils';
 import { getTickerFormat } from '../../../helpers/stringHelper';
+<<<<<<< HEAD
 import * as midgardActions from '../../../redux/midgard/actions';
+=======
+import midgardActions from '../../../redux/midgard/actions';
+
+const { getPools } = midgardActions;
+>>>>>>> origin/master
 
 class PoolView extends Component {
   constructor(props) {
@@ -233,7 +239,11 @@ export default compose(
       assetData: state.Wallet.assetData,
     }),
     {
+<<<<<<< HEAD
       getPools: midgardActions.getPools,
+=======
+      getPools,
+>>>>>>> origin/master
     },
   ),
   withRouter,

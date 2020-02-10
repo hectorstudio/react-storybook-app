@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 /**
  * Tx types
  */
@@ -9,7 +13,11 @@ export enum TxTypes {
   TRADE = 'trade',
 }
 
+<<<<<<< HEAD
 export type TxStatus = {
+=======
+export interface TxStatus {
+>>>>>>> origin/master
   /**
    * Type of tx's - optional
    */
@@ -38,11 +46,21 @@ export type TxStatus = {
    * Transaction hash - optional
    */
   readonly hash?: string;
+<<<<<<< HEAD
 };
+=======
+}
+>>>>>>> origin/master
 
 /**
  * State of reducer
  */
+<<<<<<< HEAD
 export type State = {
   readonly txStatus: TxStatus;
 };
+=======
+export interface State {
+  readonly txStatus: TxStatus;
+}
+>>>>>>> origin/master

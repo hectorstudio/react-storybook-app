@@ -45,7 +45,11 @@ const PublicRoutes = props => {
 };
 
 PublicRoutes.propTypes = {
+<<<<<<< HEAD
   user: PropTypes.object, // Maybe<User>
+=======
+  user: PropTypes.object,
+>>>>>>> origin/master
   history: PropTypes.object,
 };
 

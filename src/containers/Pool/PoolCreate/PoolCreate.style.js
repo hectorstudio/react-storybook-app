@@ -207,6 +207,17 @@ export const ContentWrapper = styled(ContentView)`
 
 // Needs to be rewritten as a reusable component
 
+<<<<<<< HEAD
+=======
+export const PrivateModal = styled(Modal)`
+  .ant-modal-body {
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+  }
+`;
+
+>>>>>>> origin/master
 export const ConfirmModal = styled(Modal)`
   &.ant-modal {
     width: 420px !important;

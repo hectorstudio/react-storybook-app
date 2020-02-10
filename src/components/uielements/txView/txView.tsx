@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+/* eslint react/prop-types: 0 */
+
+>>>>>>> origin/master
 import React, { useState, useEffect, useCallback } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import { TimerFullIcon, ConfirmIcon } from '../../icons/timerIcons';
